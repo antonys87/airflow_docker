@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker build -t antonyrajs87/airflow-docker .
+
+test:
+  pre:
+    - sleep 5
+  override:
+    - docker run antonyrajs87/docker-airflow version |grep '1.0.0'
